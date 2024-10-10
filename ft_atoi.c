@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/07 18:19:31 by jboon             #+#    #+#             */
+/*   Updated: 2024/10/08 17:41:44 by jboon            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static const char	*ft_trim_whitespaces(const char *nptr)
+{
+	while (*nptr == ' ' || *nptr == '\f' || *nptr == '\n' || *nptr == '\r'
+		|| *nptr == '\t' || *nptr == '\v')
+		nptr++;
+	return (nptr);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	int	result;
+	int	symbol;
+
+	result = 0;
+	symbol = 1;
+	nptr = ft_trim_whitespaces(nptr);
+	if (*nptr == '-' || *nptr == '+')
+	{
+		if (*nptr == '-')
+			symbol = -1;
+		nptr++;
+	}
+	while (*nptr && ft_isdigit(*nptr))
+	{
+		result *= 10;
+		result += (*nptr - '0') * symbol;
+		nptr++;
+	}
+	return (result);
+}
