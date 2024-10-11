@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:50:47 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 17:17:22 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/11 18:57:23 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static size_t	count_digits(int n)
 	return (count);
 }
 
+#include <stdio.h>
+
 char	*ft_itoa(int n)
 {
 	size_t	len;
@@ -48,6 +50,8 @@ char	*ft_itoa(int n)
 	nbr[len] = '\0';
 	if (direction == -1)
 		nbr[0] = '-';
+	if (n == 0)
+		nbr[len - 1] = '0';
 	while (n != 0)
 	{
 		len--;

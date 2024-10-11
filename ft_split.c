@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:23:03 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 17:16:00 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/11 18:51:45 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ static size_t	count_words(char const *s, char c)
 	size_t	count;
 
 	count = 0;
-	while (*s)
+	if (s != NULL)
 	{
-		while (*s == c)
-			s++;
-		if (*s != '\0')
-			count++;
-		while (*s != c && *s)
-			s++;
+		while (*s)
+		{
+			while (*s == c)
+				s++;
+			if (*s != '\0')
+				count++;
+			while (*s != c && *s)
+				s++;
+		}
 	}
 	return (count);
 }
