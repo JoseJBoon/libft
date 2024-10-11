@@ -6,13 +6,13 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:43:13 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/08 17:23:15 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/10 16:56:51 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char	*ft_strchar(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s && *s != c)
 		s++;

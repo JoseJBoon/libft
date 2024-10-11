@@ -6,13 +6,13 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:03:11 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/08 17:33:33 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/11 10:43:34 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int	memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t				i;
 	const unsigned char	*sa;
@@ -23,7 +23,7 @@ int	memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	sa = (unsigned char *) s1;
 	sb = (unsigned char *) s2;
-	while (sa[i] != sb[i] && i < (n - 1))
+	while (sa[i] == sb[i] && i < (n - 1))
 		i++;
 	return (sa[i] - sb[i]);
 }

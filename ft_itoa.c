@@ -1,35 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 10:40:28 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 17:10:45 by jboon            ###   ########.fr       */
+/*   Created: 2024/10/10 15:50:47 by jboon             #+#    #+#             */
+/*   Updated: 2024/10/11 17:17:22 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
-#include <limits.h>
 #include "libft.h"
 
-static int	is_int_overflow(size_t a, size_t b)
+static size_t	count_digits(int n)
 {
-	if (b > 0 && a > ULONG_MAX / b)
+	size_t	count;
+
+	if (n == 0)
 		return (1);
-	return (0);
+	count = 0;
+	while (n != 0)
+	{
+		n /= 10;
+		count++;
+	}
+	return (count);
 }
 
-void	*ft_calloc(size_t elements, size_t size)
+char	*ft_itoa(int n)
 {
-	void *ptr;
+	size_t	len;
+	char	*nbr;
+	int		direction;
 
-	if (is_int_overflow(elements, size))
+	direction = 1;
+	len = count_digits(n);
+	if (n < 0)
+	{
+		direction = -1;
+		len += 1;
+	}
+	nbr = malloc((len + 1) * sizeof(char));
+	if (nbr == NULL)
 		return (NULL);
-	ptr = malloc(elements * size);
-	if (ptr != NULL)
-		ft_bzero(ptr, elements * size);
-	return (ptr);
+	nbr[len] = '\0';
+	if (direction == -1)
+		nbr[0] = '-';
+	while (n != 0)
+	{
+		len--;
+		nbr[len] = '0' + (n % 10) * direction;
+		n /= 10;
+	}
+	return (nbr);
 }

@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 17:52:54 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 15:01:01 by jboon            ###   ########.fr       */
+/*   Created: 2024/10/10 18:46:00 by jboon             #+#    #+#             */
+/*   Updated: 2024/10/11 10:08:39 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	size_t				i;
-	const unsigned char	*mem;
-	unsigned char		character;
+	size_t	i;
 
 	i = 0;
-	mem = (unsigned char *)s;
-	character = (unsigned char)c;
-	while (i < n)
+	while (s[i])
 	{
-		if (mem[i] == character)
-			return ((void *)(mem + i));
+		f(i, (s + i));
 		i++;
 	}
-	return (NULL);
 }

@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 10:40:28 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 17:10:45 by jboon            ###   ########.fr       */
+/*   Created: 2024/10/10 14:49:35 by jboon             #+#    #+#             */
+/*   Updated: 2024/10/11 18:02:29 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
-#include <limits.h>
+
 #include "libft.h"
 
-static int	is_int_overflow(size_t a, size_t b)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	if (b > 0 && a > ULONG_MAX / b)
-		return (1);
-	return (0);
-}
+	char	*sub;
+	size_t	s_len;
 
-void	*ft_calloc(size_t elements, size_t size)
-{
-	void *ptr;
-
-	if (is_int_overflow(elements, size))
+	s_len = 0;
+	if (s == NULL)
 		return (NULL);
-	ptr = malloc(elements * size);
-	if (ptr != NULL)
-		ft_bzero(ptr, elements * size);
-	return (ptr);
+	while (s[s_len])
+		s_len++;
+	if (start >= s_len)
+		len = 0;
+	else if (start + len > s_len)
+		len = start + len - s_len;
+	sub = malloc((len + 1) * sizeof(char));
+	if (sub == NULL)
+		return (NULL);
+	if (start < s_len)
+		sub = ft_memcpy(sub, s + start, len);
+	sub[len] = '\0';
+	return (sub);
 }

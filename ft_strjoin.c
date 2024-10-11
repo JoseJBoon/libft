@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 10:40:28 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 17:10:45 by jboon            ###   ########.fr       */
+/*   Created: 2024/10/10 15:01:54 by jboon             #+#    #+#             */
+/*   Updated: 2024/10/11 18:06:00 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
-#include <limits.h>
+
 #include "libft.h"
 
-static int	is_int_overflow(size_t a, size_t b)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (b > 0 && a > ULONG_MAX / b)
-		return (1);
-	return (0);
+	char	*dst;
+	size_t	len_1;
+	size_t	len_2;
+
+	if (s1 != NULL)
+		len_1 = ft_strlen(s1);
+	else
+		len_1 = 0;
+	if (s2 != NULL)
+		len_2 = ft_strlen(s2);
+	else
+		len_2 = 0;
+	dst = malloc((len_1 + len_2 + 1) * sizeof(char));
+	if (dst == NULL)
+		return (NULL);
+	ft_memcpy(dst, s1, len_1);
+	ft_memcpy(dst + len_1, s2, len_2);
+	*(dst + len_1 + len_2) = '\0';
+	return (dst);
 }
 
-void	*ft_calloc(size_t elements, size_t size)
+int	main(void)
 {
-	void *ptr;
 
-	if (is_int_overflow(elements, size))
-		return (NULL);
-	ptr = malloc(elements * size);
-	if (ptr != NULL)
-		ft_bzero(ptr, elements * size);
-	return (ptr);
 }
