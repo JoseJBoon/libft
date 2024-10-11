@@ -1,7 +1,10 @@
+# .vscode
+.vscode/
 # binary files
 *.o
 libft
 libft.so
 libft.a
+*.out
 # bin folder
 /bin/
