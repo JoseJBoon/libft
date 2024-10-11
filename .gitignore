@@ -1,3 +1,7 @@
 # binary files
 *.o
 libft
+libft.so
+libft.a
+# bin folder
+/bin/
