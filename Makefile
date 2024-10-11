@@ -16,7 +16,6 @@ all: $(BIN_DIR) $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 so: all
-#	$(CC) -fPIC $(CFLAGS) $(SRCS)
 	gcc -shared -o libft.so $(OBJS)
 
 build: all
