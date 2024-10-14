@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 12:55:17 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 15:07:22 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 18:16:42 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_list	*create_node(void *content, void (*del)(void *))
 	t_list	*node;
 
 	node = ft_lstnew(content);
-	if (node != NULL)
+	if (node == NULL)
 		del(content);
 	return (node);
 }

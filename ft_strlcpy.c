@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:58:25 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 11:02:57 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 17:47:32 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	len = 0;
 	if (size > 0)
 	{
-		while (src[len] && dst[len] && len < (size - 1))
+		while (src[len] && len < (size - 1))
 		{
 			dst[len] = src[len];
 			++len;
