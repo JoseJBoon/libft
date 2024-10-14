@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:11:45 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 18:52:49 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:04:12 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static int	is_seperator(char c, char const *set)
 {
 	while (*set && *set != c)
-		set++;
+		++set;
 	return (*set != '\0');
 }
 
@@ -44,9 +44,9 @@ char	*ft_strtrim(char const *s1, char const *set)
 		s1++;
 	start = s1;
 	while (*s1)
-		s1++;
+		++s1;
 	while (is_seperator(*s1, set) || *s1 == '\0')
-		s1--;
+		--s1;
 	if (s1 > start)
 		len = (s1 + 1) - start;
 	else

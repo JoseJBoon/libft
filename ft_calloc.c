@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:40:28 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 17:10:45 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:41:53 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	is_int_overflow(size_t a, size_t b)
 
 void	*ft_calloc(size_t elements, size_t size)
 {
-	void *ptr;
+	void	*ptr;
 
 	if (is_int_overflow(elements, size))
 		return (NULL);

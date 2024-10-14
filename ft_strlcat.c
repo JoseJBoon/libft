@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:34:34 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 16:39:45 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:02:43 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (dst != NULL)
 	{
 		while (dst[len])
-			len++;
+			++len;
 	}
 	if (size > 0)
 	{
 		while (src[i] && (len + i) < (size - 1))
 		{
 			dst[len + i] = src[i];
-			i++;
+			++i;
 		}
 		dst[len + i] = '\0';
 	}
 	while (src[i])
-		i++;
+		++i;
 	if (len > size)
 		len = size;
 	return (len + i);

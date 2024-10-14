@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:19:31 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/08 17:41:44 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 10:46:40 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	ft_atoi(const char *nptr)
 	{
 		if (*nptr == '-')
 			symbol = -1;
-		nptr++;
+		++nptr;
 	}
 	while (*nptr && ft_isdigit(*nptr))
 	{
 		result *= 10;
 		result += (*nptr - '0') * symbol;
-		nptr++;
+		++nptr;
 	}
 	return (result);
 }

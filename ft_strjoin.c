@@ -6,13 +6,12 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:01:54 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 18:06:00 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:41:31 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
-
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -36,9 +35,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memcpy(dst + len_1, s2, len_2);
 	*(dst + len_1 + len_2) = '\0';
 	return (dst);
-}
-
-int	main(void)
-{
-
 }

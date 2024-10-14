@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:14:38 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 14:42:57 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:00:10 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	while (i < n)
 	{
 		d[i] = s[i];
-		i++;
+		++i;
 	}
 	return (dest);
 }

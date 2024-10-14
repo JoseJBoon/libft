@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:31:58 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 14:58:44 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:00:23 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	{
 		while (n > 0)
 		{
-			n--;
+			--n;
 			d[n] = s[n];
 		}
 		return (dest);
@@ -35,7 +35,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	while (i < n)
 	{
 		d[i] = s[i];
-		i++;
+		++i;
 	}
 	return (dest);
 }

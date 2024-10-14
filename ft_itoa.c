@@ -6,13 +6,12 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:50:47 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 18:57:23 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 12:05:45 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
-#include "libft.h"
 
 static size_t	count_digits(int n)
 {
@@ -24,12 +23,31 @@ static size_t	count_digits(int n)
 	while (n != 0)
 	{
 		n /= 10;
-		count++;
+		++count;
 	}
 	return (count);
 }
 
-#include <stdio.h>
+static void	fill_str_nbr(int n, size_t len, char *nbr)
+{
+	int	sign;
+
+	if (n < 0)
+	{
+		sign = -1;
+		nbr[0] = '-';
+	}
+	else
+		sign = 1;
+	if (n == 0)
+		nbr[len - 1] = '0';
+	while (n != 0)
+	{
+		--len;
+		nbr[len] = '0' + (n % 10) * sign;
+		n /= 10;
+	}
+}
 
 char	*ft_itoa(int n)
 {
@@ -42,21 +60,12 @@ char	*ft_itoa(int n)
 	if (n < 0)
 	{
 		direction = -1;
-		len += 1;
+		++len;
 	}
 	nbr = malloc((len + 1) * sizeof(char));
 	if (nbr == NULL)
 		return (NULL);
 	nbr[len] = '\0';
-	if (direction == -1)
-		nbr[0] = '-';
-	if (n == 0)
-		nbr[len - 1] = '0';
-	while (n != 0)
-	{
-		len--;
-		nbr[len] = '0' + (n % 10) * direction;
-		n /= 10;
-	}
+	fill_str_nbr(n, len, nbr);
 	return (nbr);
 }

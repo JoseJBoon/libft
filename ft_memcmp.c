@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:03:11 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 10:43:34 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:00:03 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	sa = (unsigned char *) s1;
 	sb = (unsigned char *) s2;
 	while (sa[i] == sb[i] && i < (n - 1))
-		i++;
+		++i;
 	return (sa[i] - sb[i]);
 }

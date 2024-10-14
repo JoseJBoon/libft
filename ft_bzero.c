@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:56:00 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/08 18:52:30 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:35:05 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,28 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t			i;
+	const size_t	max_size = sizeof(size_t);
 	unsigned char	*s1;
+	size_t			*s2;
 
-	i = 0;
-	s1 = (unsigned char *)s;
-	while (i < n)
+	if (n > max_size)
 	{
-		s1[i] = '\0';
-		i++;
+		s2 = (size_t *)s;
+		while (n >= max_size)
+		{
+			n -= max_size;
+			*s2 = 0UL;
+			++s2;
+		}
+	}
+	if (n > 0)
+	{
+		s1 = (unsigned char *)s2;
+		while (n > 0)
+		{
+			--n;
+			*s1 = 0;
+			++s1;
+		}
 	}
 }

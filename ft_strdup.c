@@ -6,16 +6,13 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:04:57 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/08 18:05:48 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:39:03 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stddef.h>
-
-#include <stdio.h>
-
-size_t	ft_strlen(const char *s);
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
@@ -29,7 +26,7 @@ char	*ft_strdup(const char *s)
 	while (len > 0)
 	{
 		dup[len] = s[len];
-		len--;
+		--len;
 	}
 	dup[len] = s[len];
 	return (dup);

@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:23:03 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/11 18:51:45 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/14 11:01:49 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static size_t	count_words(char const *s, char c)
 		while (*s)
 		{
 			while (*s == c)
-				s++;
+				++s;
 			if (*s != '\0')
-				count++;
+				++count;
 			while (*s != c && *s)
-				s++;
+				++s;
 		}
 	}
 	return (count);
@@ -42,7 +42,7 @@ static char	**free_words(char **words, size_t count)
 	while (i < count)
 	{
 		free(words[i]);
-		i++;
+		++i;
 	}
 	free(words);
 	return (NULL);
@@ -64,15 +64,15 @@ char	**ft_split(char const *s, char c)
 	while (i < count)
 	{
 		while (*s == c)
-			s++;
+			++s;
 		word_len = 0;
 		while (s[word_len] != c && s[word_len])
-			word_len++;
+			++word_len;
 		words[i] = ft_substr(s, 0, word_len);
 		if (words[i] == NULL)
 			return (free_words(words, i + 1));
 		s += word_len;
-		i++;
+		++i;
 	}
 	return (words);
 }
