@@ -43,7 +43,7 @@ fclean: clean
 	rm -fv $(PROGRAM)
 	rm -fv libft.so
 	rm -fv $(NAME)
-	rmdir $(BIN_DIR)
+	rm -df $(BIN_DIR)
 
 re: fclean all
 
