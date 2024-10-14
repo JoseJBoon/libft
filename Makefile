@@ -8,18 +8,24 @@ ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c \
 ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
 ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c
+SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 BIN_DIR = ./bin/
 DEP = libft.h
 OBJS := $(SRCS:%.c=$(BIN_DIR)%.o)
+OBJS_BONUS := $(SRCS_BONUS:%.c=$(BIN_DIR)%.o)
 
 all: $(BIN_DIR) $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
-so: all
-	gcc -shared -o libft.so $(OBJS)
+bonus: all $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS_BONUS)
 
-build: all
-	$(CC) -c $(CFLAGS) main.c -o $(BIN_DIR)main.o
+so: bonus
+	gcc -shared -o libft.so $(OBJS) $(OBJS_BONUS)
+
+build: all bonus
+	$(CC) -c $(CFLAGS) tests/main.c -o $(BIN_DIR)main.o
 	$(CC) -o $(PROGRAM) $(BIN_DIR)main.o $(NAME)
 
 $(BIN_DIR)%.o: %.c
@@ -30,6 +36,7 @@ $(BIN_DIR):
 
 clean:
 	rm -fv $(OBJS)
+	rm -fv $(OBJS_BONUS)
 	rm -fv $(BIN_DIR)main.o
 
 fclean: clean
@@ -40,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONE: all clean fclean re build
+.PHONE: all clean fclean re build bonus
