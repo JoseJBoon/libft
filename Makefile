@@ -27,7 +27,7 @@ build: all bonus
 	$(CC) -c $(CFLAGS) tests/main.c -o $(BIN_DIR)main.o
 	$(CC) -lbsd -o $(PROGRAM) $(BIN_DIR)main.o $(NAME)
 
-$(BIN_DIR)%.o: %.c
+$(BIN_DIR)%.o: %.c $(DEP)
 	$(CC) -c $(CFLAGS) $< -o $@
 
 $(BIN_DIR):
