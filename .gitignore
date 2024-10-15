@@ -6,5 +6,6 @@ libft
 libft.so
 libft.a
 *.out
-# bin folder
+# temp folders
 /bin/
+/tests/
