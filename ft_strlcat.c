@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 17:34:34 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/15 13:10:45 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:26:21 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	len = 0;
 	if (dst != NULL)
 	{
-		while (dst[len])
+		while (dst[len] && len < size)
 			++len;
 	}
-	if (size > 0 && len < size)
+	if (len < size)
 	{
 		while (src[i] && (len + i) < (size - 1))
 		{
@@ -35,7 +35,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	}
 	while (src[i])
 		++i;
-	if (len > size)
-		len = size;
 	return (len + i);
 }
