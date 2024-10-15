@@ -15,18 +15,17 @@ DEP = libft.h
 OBJS := $(SRCS:%.c=$(BIN_DIR)%.o)
 OBJS_BONUS := $(SRCS_BONUS:%.c=$(BIN_DIR)%.o)
 
-all: $(BIN_DIR) $(OBJS)
+all: $(NAME)
+
+$(NAME): $(BIN_DIR) $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 bonus: all $(OBJS_BONUS)
 	ar rcs $(NAME) $(OBJS_BONUS)
 
-so: bonus
-	gcc -shared -o libft.so $(OBJS) $(OBJS_BONUS)
-
 build: all bonus
 	$(CC) -c $(CFLAGS) tests/main.c -o $(BIN_DIR)main.o
-	$(CC) -o $(PROGRAM) $(BIN_DIR)main.o $(NAME)
+	$(CC) -lbsd -o $(PROGRAM) $(BIN_DIR)main.o $(NAME)
 
 $(BIN_DIR)%.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
@@ -41,7 +40,6 @@ clean:
 
 fclean: clean
 	rm -fv $(PROGRAM)
-	rm -fv libft.so
 	rm -fv $(NAME)
 	rm -df $(BIN_DIR)
 
