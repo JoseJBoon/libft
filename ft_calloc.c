@@ -6,18 +6,17 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:40:28 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 11:41:53 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/15 13:10:25 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stddef.h>
-#include <limits.h>
+#include <stdint.h>
 #include "libft.h"
 
 static int	is_int_overflow(size_t a, size_t b)
 {
-	if (b > 0 && a > ULONG_MAX / b)
+	if (b > 0 && a > SIZE_MAX / b)
 		return (1);
 	return (0);
 }

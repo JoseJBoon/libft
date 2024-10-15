@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:43:13 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 11:01:56 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/15 11:15:51 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s && *s != c)
+	char	find;
+
+	find = (char)c;
+	while (*s && *s != find)
 		++s;
-	if (*s == c)
+	if (*s == find)
 		return ((char *)s);
 	return (NULL);
 }
