@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:19:31 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 10:46:40 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/17 11:25:06 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static const char	*ft_trim_whitespaces(const char *nptr)
 {
 	while (*nptr == ' ' || *nptr == '\f' || *nptr == '\n' || *nptr == '\r'
 		|| *nptr == '\t' || *nptr == '\v')
-		nptr++;
+		++nptr;
 	return (nptr);
 }
 
