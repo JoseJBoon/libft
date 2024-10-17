@@ -6,11 +6,10 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:23:03 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 11:01:49 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/17 11:44:17 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include <stdlib.h>
 #include "libft.h"
 

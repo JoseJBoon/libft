@@ -6,12 +6,11 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:50:47 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 12:05:45 by jboon            ###   ########.fr       */
+/*   Updated: 2024/10/17 11:34:53 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stddef.h>
 
 static size_t	count_digits(int n)
 {
