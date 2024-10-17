@@ -1,5 +1,4 @@
 NAME = libft.a
-PROGRAM = libft
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
@@ -33,10 +32,8 @@ $(BIN_DIR):
 clean:
 	rm -fv $(OBJS)
 	rm -fv $(OBJS_BONUS)
-	rm -fv $(BIN_DIR)main.o
 
 fclean: clean
-	rm -fv $(PROGRAM)
 	rm -fv $(NAME)
 	rm -df $(BIN_DIR)
 
