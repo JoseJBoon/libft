@@ -6,12 +6,12 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:11:45 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 13:53:54 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 16:43:05 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "../include/libft.h"
 
 static int	is_seperator(char c, char const *set)
 {

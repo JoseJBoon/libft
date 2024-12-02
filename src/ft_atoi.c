@@ -6,11 +6,11 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:19:31 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 16:20:26 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 16:43:07 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 static const char	*ft_trim_whitespaces(const char *nptr)
 {

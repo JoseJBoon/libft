@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lsnew.c                                         :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:13:20 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 12:16:32 by jboon            ###   ########.fr       */
+/*   Created: 2024/10/07 16:31:58 by jboon             #+#    #+#             */
+/*   Updated: 2024/12/02 16:43:05 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "../include/libft.h"
 
-t_list	*ft_lstnew(void *content)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_list	*node;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	node = malloc(sizeof(t_list));
-	if (node)
+	if (n == 0 || dest == src)
+		return (dest);
+	if (src < dest)
 	{
-		node->content = content;
-		node->next = NULL;
+		d = (unsigned char *)dest;
+		s = (unsigned char *)src;
+		while (n > 0)
+		{
+			--n;
+			d[n] = s[n];
+		}
+		return (dest);
 	}
-	return (node);
+	return (ft_memcpy(dest, src, n));
 }

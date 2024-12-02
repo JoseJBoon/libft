@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 18:51:10 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 11:11:32 by jboon            ###   ########.fr       */
+/*   Created: 2024/10/08 13:04:57 by jboon             #+#    #+#             */
+/*   Updated: 2024/12/02 16:43:05 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stddef.h>
-#include "libft.h"
+#include <stdlib.h>
+#include "../include/libft.h"
 
-int	ft_putstr_fd(char *s, int fd)
+char	*ft_strdup(const char *s)
 {
-	return (write(fd, s, ft_strlen(s)));
+	size_t	len;
+	char	*dup;
+
+	len = ft_strlen(s);
+	dup = malloc((len + 1) * sizeof(char));
+	if (dup == NULL)
+		return (NULL);
+	return (ft_memcpy(dup, s, len + 1));
 }
