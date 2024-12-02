@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:07:58 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 11:35:52 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 16:27:49 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
-		return (8);
-	return (0);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

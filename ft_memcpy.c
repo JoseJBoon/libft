@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:14:38 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 11:00:10 by jboon            ###   ########.fr       */
+/*   Updated: 2024/11/29 16:11:43 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	if (src == NULL && dest == NULL)
+	if (n == 0 || src == dest)
 		return (dest);
 	i = 0;
 	d = (unsigned char *)dest;

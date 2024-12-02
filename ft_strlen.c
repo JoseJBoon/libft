@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:30:08 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/14 11:03:10 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 11:28:05 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	len;
+	const char	*end;
 
-	len = 0;
-	while (s[len])
-		++len;
-	return (len);
+	end = s;
+	while (*end)
+		++end;
+	return (end - s);
 }

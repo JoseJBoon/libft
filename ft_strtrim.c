@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:11:45 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/15 13:11:15 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 13:53:54 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,14 @@ static int	is_seperator(char c, char const *set)
 	return (*set != '\0');
 }
 
-static char	*create_str(size_t size)
-{
-	char	*s;
-
-	s = malloc(size * sizeof(char));
-	if (s == NULL)
-		return (NULL);
-	*s = '\0';
-	return (s);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t		len;
 	const char	*start;
 	char		*dst;
 
-	if (s1 == NULL || *s1 == '\0')
-		return (create_str(1));
+	if (*s1 == '\0')
+		return (ft_calloc(1, sizeof(char)));
 	while (*s1 && is_seperator(*s1, set))
 		++s1;
 	start = s1;
@@ -50,7 +39,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		len = (s1 + 1) - start;
 	else
 		len = 0;
-	dst = create_str(len + 1);
+	dst = malloc((len + 1) * sizeof(char));
 	if (dst == NULL)
 		return (NULL);
 	dst = ft_memcpy(dst, start, len);

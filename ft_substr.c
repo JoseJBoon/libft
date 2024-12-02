@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 14:49:35 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/15 13:11:35 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 13:56:27 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	s_len;
 
 	s_len = 0;
-	if (s == NULL)
-		return (NULL);
 	while (s[s_len])
 		++s_len;
 	if (start >= s_len)

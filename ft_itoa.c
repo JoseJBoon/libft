@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 15:50:47 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/17 11:34:53 by jboon            ###   ########.fr       */
+/*   Updated: 2024/11/29 15:48:29 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,44 +27,32 @@ static size_t	count_digits(int n)
 	return (count);
 }
 
-static void	fill_str_nbr(int n, size_t len, char *nbr)
+static void	fill_str_nbr(unsigned int n, size_t len, char *nbr, int is_negative)
 {
-	int	sign;
-
-	if (n < 0)
-	{
-		sign = -1;
-		nbr[0] = '-';
-	}
-	else
-		sign = 1;
 	if (n == 0)
 		nbr[len - 1] = '0';
+	else if (is_negative)
+		nbr[0] = '-';
 	while (n != 0)
 	{
-		--len;
-		nbr[len] = '0' + (n % 10) * sign;
+		nbr[--len] = '0' + (n % 10);
 		n /= 10;
 	}
 }
 
 char	*ft_itoa(int n)
 {
-	size_t	len;
-	char	*nbr;
-	int		direction;
+	size_t			len;
+	char			*nbr;
 
-	direction = 1;
-	len = count_digits(n);
-	if (n < 0)
-	{
-		direction = -1;
-		++len;
-	}
+	len = count_digits(n) + (n < 0);
 	nbr = malloc((len + 1) * sizeof(char));
 	if (nbr == NULL)
 		return (NULL);
 	nbr[len] = '\0';
-	fill_str_nbr(n, len, nbr);
+	if (n < 0)
+		fill_str_nbr((~n + 1), len, nbr, 1);
+	else
+		fill_str_nbr(n, len, nbr, 0);
 	return (nbr);
 }

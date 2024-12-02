@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:19:31 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/17 11:25:06 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 16:20:26 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 static const char	*ft_trim_whitespaces(const char *nptr)
 {
-	while (*nptr == ' ' || *nptr == '\f' || *nptr == '\n' || *nptr == '\r'
-		|| *nptr == '\t' || *nptr == '\v')
+	while (*nptr && ft_strchr(" \f\n\r\t\v", *nptr))
 		++nptr;
 	return (nptr);
 }
@@ -36,9 +35,8 @@ int	ft_atoi(const char *nptr)
 	}
 	while (*nptr && ft_isdigit(*nptr))
 	{
-		result *= 10;
-		result += (*nptr - '0') * symbol;
+		result = result * 10 + (*nptr - '0');
 		++nptr;
 	}
-	return (result);
+	return (result * symbol);
 }

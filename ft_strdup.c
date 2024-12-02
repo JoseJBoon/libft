@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:04:57 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/17 11:44:43 by jboon            ###   ########.fr       */
+/*   Updated: 2024/11/29 16:59:07 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,5 @@ char	*ft_strdup(const char *s)
 	dup = malloc((len + 1) * sizeof(char));
 	if (dup == NULL)
 		return (NULL);
-	while (len > 0)
-	{
-		dup[len] = s[len];
-		--len;
-	}
-	dup[len] = s[len];
-	return (dup);
+	return (ft_memcpy(dup, s, len + 1));
 }

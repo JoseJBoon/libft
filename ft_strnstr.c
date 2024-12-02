@@ -6,33 +6,36 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:09:16 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/15 11:31:03 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 13:35:36 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include <stdint.h>
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t	i;
-	size_t	count;
+	const char	*curr;
+	const char	*end;
 
-	if (needle[0] == '\0')
+	if (*needle == '\0')
 		return ((char *)haystack);
-	i = 0;
-	count = 0;
-	while (i < len && haystack[i])
+	if (len > SIZE_MAX - (size_t)haystack)
+		end = haystack + SIZE_MAX - (size_t)haystack;
+	else
+		end = haystack + len;
+	while (haystack < end && *haystack)
 	{
-		if (haystack[i] == needle[count])
-			++count;
-		else
+		curr = haystack;
+		while (*curr && curr < end && *curr == *needle)
 		{
-			i -= count;
-			count = 0;
+			++curr;
+			++needle;
 		}
-		if (needle[count] == '\0')
-			return ((char *)(haystack + (i - (count - 1))));
-		++i;
+		if (*needle == '\0')
+			return ((char *)haystack);
+		needle -= (curr - haystack);
+		++haystack;
 	}
 	return (NULL);
 }
