@@ -6,13 +6,13 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 10:40:28 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 16:43:05 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 17:38:56 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdint.h>
-#include "../include/libft.h"
+#include "libft.h"
 
 static int	is_int_overflow(size_t a, size_t b)
 {

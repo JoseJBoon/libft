@@ -6,11 +6,11 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 18:53:55 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 16:43:05 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 17:38:56 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/libft.h"
+#include "libft.h"
 
 int	ft_putendl_fd(char *s, int fd)
 {

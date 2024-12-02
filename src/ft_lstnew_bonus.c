@@ -6,12 +6,12 @@
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 12:13:20 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 16:43:05 by jboon            ###   ########.fr       */
+/*   Updated: 2024/12/02 17:38:56 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../include/libft.h"
+#include "libft.h"
 
 t_list	*ft_lstnew(void *content)
 {

@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:20:54 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 17:38:56 by jboon            ###   ########.fr       */
+/*   Created: 2024/10/29 15:12:51 by jboon             #+#    #+#             */
+/*   Updated: 2024/12/02 17:43:14 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <stddef.h>
+# include <unistd.h>
 
-int	ft_lstsize(t_list *lst)
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 128
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
+
+typedef struct s_buffer
 {
-	int	size;
+	char	*buffer;
+	char	*start;
+	ssize_t	bytes;
+}	t_buffer;
 
-	size = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		++size;
-	}
-	return (size);
-}
+char	*get_next_line(int fd);
+char	*get_next_line_bonus(int fd);
+#endif

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_strchrnul.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 12:20:54 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/02 17:38:56 by jboon            ###   ########.fr       */
+/*   Created: 2024/12/02 17:40:06 by jboon             #+#    #+#             */
+/*   Updated: 2024/12/02 17:40:20 by jboon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_lstsize(t_list *lst)
+char	*ft_strchrnul(const char *s, int c)
 {
-	int	size;
+	char	find;
 
-	size = 0;
-	while (lst != NULL)
-	{
-		lst = lst->next;
-		++size;
-	}
-	return (size);
+	find = (char)c;
+	while (*s && *s != find)
+		++s;
+	return ((char *)s);
 }
