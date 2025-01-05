@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/18 10:21:17 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/03 15:33:08 by jboon            ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_printf.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jboon <jboon@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/10/18 10:21:17 by jboon         #+#    #+#                 */
+/*   Updated: 2025/01/05 13:33:48 by jboon         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,52 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+#define PRINT_SIZE 9
+
+static const t_printf	g_print[PRINT_SIZE] = { 
+{'c', ft_printf_char}, {'s', ft_printf_str}, {'i', ft_printf_int},
+{'d', ft_printf_int}, {'u', ft_printf_uint}, {'x', ft_printf_hex},
+{'X', ft_printf_hex}, {'p', ft_printf_ptr}, {'%', ft_printf_char}
+};
+
+static void	set_print_data(va_list args, char spec, t_printf_data *p_data)
+{
+	if (spec == 'c')
+		p_data->c = va_arg(args, int);
+	else if (spec == 's')
+		p_data->str = va_arg(args, char *);
+	else if (spec == 'i' || spec == 'd')
+		p_data->i = va_arg(args, int);
+	else if (spec == 'x' || spec == 'X' || spec == 'u')
+		p_data->u_lint = va_arg(args, unsigned int);
+	else if (spec == 'p')
+		p_data->ptr = va_arg(args, void *);
+	else if (spec == '%')
+		p_data->c = '%';
+	else
+		p_data->u_lint = 0;
+}
+
 /*
 	Select the specifier based on c and write the output.
 	@return The amount of printed characters. 0 if no specifier was found.
 */
-static int	write_specifier(const char *c, int s_ln, t_format *f, va_list *args)
+static int	write_specifier(const char *c, int s_ln, t_format *f, va_list args)
 {
-	char	*dst;
-	int		len;
+	t_printf_data	p_data;
+	int				len;
+	char			*dst;
 
-	len = 0;
-	dst = NULL;
-	if (*c == 'c')
-		dst = ft_printf_char(va_arg(*args, int), f, &len);
-	else if (*c == 's')
-		dst = ft_printf_str(va_arg(*args, char *), f, &len);
-	else if (*c == 'p')
-		dst = ft_printf_ptr(va_arg(*args, void *), f, &len);
-	else if (*c == 'x' || *c == 'X')
-		dst = handle_hex(*c, va_arg(*args, unsigned int), f, &len);
-	else if (*c == 'i' || *c == 'd')
-		dst = ft_printf_int(va_arg(*args, int), f, &len);
-	else if (*c == 'u')
-		dst = handle_uint(va_arg(*args, unsigned int), f, &len);
-	else if (*c == '%')
-		return (write(STDOUT_FILENO, "%", 1));
-	else
+	len = -1;
+	while (len < PRINT_SIZE && g_print[++len].specifier != *c)
+		;
+	if (len == PRINT_SIZE)
 		return (write(STDOUT_FILENO, (c - 1), s_ln));
+	set_print_data(args, g_print[len].specifier, &p_data);
+	len = g_print[len].call(p_data, f, &dst);
 	if (dst == NULL)
 		return (-1);
-	len = write(STDOUT_FILENO, dst, len);
-	return (free (dst), len);
+	return (len = write(STDOUT_FILENO, dst, len), free(dst), len);
 }
 
 /*
@@ -54,7 +69,7 @@ static int	write_specifier(const char *c, int s_ln, t_format *f, va_list *args)
 	On failure will print out the format string itself.
 	@return Pointer s at the end of the format string.
 */
-static const char	*write_next(const char *s, va_list *args, ssize_t *w_byte)
+static const char	*write_next(const char *s, va_list args, ssize_t *w_byte)
 {
 	const char	*start;
 	ssize_t		bytes;
@@ -99,7 +114,7 @@ int	ft_printf(const char *s, ...)
 	while (*s)
 	{
 		bytes = 0;
-		s = write_next(s, &args, &bytes);
+		s = write_next(s, args, &bytes);
 		if (bytes == -1)
 		{
 			total = -1;

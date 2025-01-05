@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf_char.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 10:07:13 by jboon             #+#    #+#             */
-/*   Updated: 2024/10/29 11:53:10 by jboon            ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_printf_char.c                                   :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jboon <jboon@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/10/22 10:07:13 by jboon         #+#    #+#                 */
+/*   Updated: 2025/01/05 14:38:43 by jboon         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 	@param f The format to apply on c.
 	@param str_len Length of the formatted string.
 */
-char	*ft_printf_char(char c, t_format *f, int *str_len)
+int	ft_printf_char(t_printf_data p_data, t_format *f, char **dst)
 {
-	char	*str;
+	int		len;
 
 	if (f->width > 1)
-		*str_len = f->width;
+		len = f->width;
 	else
-		*str_len = 1;
-	if (ft_empty_str(&str, *str_len) == false)
-		return (str);
+		len = 1;
+	if (ft_empty_str(dst, len) == false)
+		return (-1);
 	if ((f->flags & LEFT_ALIGN) != 0)
-		*str = c;
+		**dst = p_data.c;
 	else
-		*(str + (*str_len - 1)) = c;
-	return (str);
+		*(*dst + (len - 1)) = p_data.c;
+	return (len);
 }

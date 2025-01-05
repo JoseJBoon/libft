@@ -4,7 +4,7 @@ vpath %.c src:src/get_next_line:src/ft_printf
 NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-INCLUDE = -I include
+INCLUDE = -I ./include
 SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd_back_bonus.c \
 ft_lstadd_front_bonus.c ft_lstclear_bonus.c ft_lstdelone_bonus.c \

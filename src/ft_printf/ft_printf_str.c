@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf_str.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 10:09:45 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/03 15:33:25 by jboon            ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_printf_str.c                                    :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jboon <jboon@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/10/22 10:09:45 by jboon         #+#    #+#                 */
+/*   Updated: 2025/01/05 13:55:35 by jboon         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,24 @@ bool	ft_empty_str(char **dst, int str_len)
 	@param f The format to apply on the src.
 	@param str_len Length of the formatted string.
 */
-char	*ft_printf_str(char *src, t_format *f, int *str_len)
+int	ft_printf_str(t_printf_data p_data, t_format *f, char **dst)
 {
 	size_t	sub_len;
 	size_t	full_len;
-	char	*dst;
+	char	*str;
 
-	src = process_string(src, &sub_len, f);
+	str = process_string(p_data.str, &sub_len, f);
 	if (f->precis >= 0 && f->precis < (int)sub_len)
 		sub_len = f->precis;
 	if (f->width > (int)sub_len)
 		full_len = f->width;
 	else
 		full_len = sub_len;
-	if (ft_empty_str(&dst, full_len) == false)
-		return (dst);
+	if (ft_empty_str(dst, full_len) == false)
+		return (-1);
 	if ((f->flags & LEFT_ALIGN) != 0)
-		ft_memcpy(dst, src, sub_len);
+		ft_memcpy(*dst, str, sub_len);
 	else
-		ft_memcpy(dst + (full_len - sub_len), src, sub_len);
-	*str_len = (int)full_len;
-	return (dst);
+		ft_memcpy((*dst + (full_len - sub_len)), str, sub_len);
+	return (full_len);
 }

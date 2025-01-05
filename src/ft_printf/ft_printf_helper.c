@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf_helper.c                                 :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 11:20:47 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/03 15:34:06 by jboon            ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_printf_helper.c                                 :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jboon <jboon@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/10/28 11:20:47 by jboon         #+#    #+#                 */
+/*   Updated: 2025/01/05 13:36:37 by jboon         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,18 @@ static char	*apply_zero_pad(char *dst, char *start, t_format *f, t_nbr *d)
 /*
 	Helper function for dealing with uint printing.
 */
-char	*handle_uint(t_ulint nbr, t_format *f, int *str_len)
+void	apply_format_uint(t_format *f)
 {
 	f->flags &= ~(BLANK_SIGN | SHOW_SIGN);
-	return (ft_printf_uint(nbr, f, false, str_len));
 }
 
 /*
 	Helper function for dealing with hex printing.
 */
-char	*handle_hex(const char c, t_ulint nbr, t_format *f, int *str_len)
+void	apply_format_hex(const char c, t_format *f)
 {
 	f->flags &= ~(BLANK_SIGN | SHOW_SIGN);
-	if (c == 'x')
-		return (ft_printf_hex(nbr, f, false, str_len));
-	return (ft_printf_hex(nbr, f, true, str_len));
+	f->use_upper = (c == 'X');
 }
 
 /*

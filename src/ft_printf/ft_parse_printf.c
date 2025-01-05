@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_parse_printf.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jboon <jboon@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 13:43:53 by jboon             #+#    #+#             */
-/*   Updated: 2024/12/03 15:34:22 by jboon            ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   ft_parse_printf.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jboon <jboon@student.codam.nl>               +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/10/28 13:43:53 by jboon         #+#    #+#                 */
+/*   Updated: 2025/01/05 13:44:04 by jboon         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@
 */
 static const char	*set_flags(const char *s, int *flag)
 {
-	const char	*start;
 	char		c;
 
 	*flag = 0;
-	start = s;
 	while (*s)
 	{
 		c = *s;
@@ -85,5 +83,11 @@ const char	*ft_parse_format(const char *s, t_format *f)
 {
 	s = set_flags(s, &f->flags);
 	s = set_width(s, &f->width);
-	return (set_precision(s, &f->precis));
+	s = set_precision(s, &f->precis);
+	f->is_negative = false;
+	if (*s == 'u')
+		apply_format_uint(f);
+	else if (*s == 'x' || *s == 'X')
+		apply_format_hex(*s, f);
+	return (s);
 }
