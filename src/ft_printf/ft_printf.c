@@ -6,7 +6,7 @@
 /*   By: jboon <jboon@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/10/18 10:21:17 by jboon         #+#    #+#                 */
-/*   Updated: 2025/01/05 13:33:48 by jboon         ########   odam.nl         */
+/*   Updated: 2025/02/01 16:37:52 by jboon         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,7 @@ int	ft_printf(const char *s, ...)
 		bytes = 0;
 		s = write_next(s, args, &bytes);
 		if (bytes == -1)
-		{
-			total = -1;
-			break ;
-		}
+			return (va_end(args), -1);
 		total += bytes;
 	}
 	va_end(args);
